@@ -1,0 +1,637 @@
+# MASTER-TO-MASTER DEVELOPMENT PROMPT — PINKCARE
+
+## 1. Your role
+
+Act as a principal software architect, senior full-stack engineer, application-security engineer, 3D web developer, UI/UX designer, healthcare-information specialist, database architect, and QA engineer.
+
+Your mission is to build **PinkCare**, a production-oriented breast cancer awareness, education, and hospital-discovery platform for Pakistan.
+
+Do not create only a landing page, static mockup, or nonfunctional demo. Build a real, maintainable application with a working frontend, secure backend, database integration, functional APIs, verified-source workflows, automated tests, and deployment documentation.
+
+Think carefully before implementing. Inspect the existing repository first. Preserve working features and existing project structure unless a change is necessary and justified.
+
+## 2. Mandatory technology stack
+
+### Frontend
+- React with Vite.
+- JavaScript and JSX only; do not introduce TypeScript.
+- React Router for navigation.
+- Three.js for interactive 3D experiences.
+- React Three Fiber and compatible Drei helpers where useful.
+- Anime.js for coordinated interface animations and SVG logo effects.
+- Modern CSS, CSS variables, responsive layouts, and accessible components.
+- Fetch or Axios for API requests.
+
+Use official Three.js documentation: https://threejs.org/docs/
+
+Use official Anime.js documentation: https://animejs.com/documentation/
+
+Use compatible dependency versions. Check the installed React version before selecting React Three Fiber. Do not blindly install incompatible major versions.
+
+### Backend
+- Node.js with Express.
+- MongoDB with Mongoose.
+- Secure cookie-based authentication where appropriate.
+- Server-side role-based access control.
+- AI provider adapter supporting an approved LLM provider, with a configurable fallback.
+- Environment-based configuration and structured validation.
+- Automated tests for critical APIs and security controls.
+
+### Architecture
+Use a clear separation between frontend, backend, database models, services, middleware, and configuration. Keep reusable components and shared validation logic organized.
+
+Suggested structure:
+
+    pinkcare/
+      client/
+        src/
+          components/
+          pages/
+          layouts/
+          animations/
+          three/
+          hooks/
+          services/
+          styles/
+          utils/
+      server/
+        src/
+          config/
+          controllers/
+          middleware/
+          models/
+          routes/
+          services/
+          validators/
+          jobs/
+          utils/
+          app.js
+          server.js
+        tests/
+      docs/
+      README.md
+      .env.example
+
+Adapt this structure to the existing repository rather than duplicating folders unnecessarily.
+
+## 3. Mission and safety boundaries
+
+PinkCare helps people understand breast health, learn warning signs, find relevant healthcare facilities, and access trustworthy educational information.
+
+It is an educational and care-navigation product, not a diagnostic medical device.
+
+Never:
+- Diagnose breast cancer.
+- Claim that a person does or does not have cancer.
+- Infer a diagnosis from uploaded photos, scans, or symptoms.
+- Generate personalized cancer-risk scores without an appropriately validated and reviewed clinical process.
+- Promise that a hospital provides a service that has not been verified.
+- Invent medical sources, hospital addresses, telephone numbers, doctors, opening hours, or availability.
+- Present AI-generated medical claims as verified facts.
+
+Clearly explain that new, persistent, or concerning breast changes warrant professional medical assessment. For urgent or emergency concerns, direct visitors to appropriate local emergency services.
+
+Medical information must be evidence-based, traceable to reputable sources, and reviewed before publication.
+
+## 4. Premium visual identity
+
+Create a distinctive, polished, modern healthcare platform called **PinkCare**.
+
+Brand qualities:
+- Compassionate.
+- Trustworthy.
+- Scientifically responsible.
+- Modern and accessible.
+- Professional enough for hospitals, NGOs, universities, and future institutional partners.
+
+Suggested palette:
+- Deep plum: #42152F
+- Breast-cancer awareness pink: #E83E8C
+- Soft pink: #FCE7F3
+- White: #FFFFFF
+- Warm background: #FFF8FB
+- Dark text: #25202A
+- Accessible muted text: #625766
+- Success green: #16794B
+
+Use the palette consistently and maintain readable contrast. Do not make the entire website neon pink.
+
+Build:
+- A premium responsive navigation bar.
+- A compelling homepage hero.
+- A recognizable PinkCare logo.
+- Beautiful educational cards.
+- Clear calls to action.
+- Smooth page transitions.
+- Elegant forms and search filters.
+- Loading, empty, error, and success states.
+- Responsive desktop, tablet, and mobile layouts.
+- A complete footer with sources, privacy, contact, and accessibility links.
+
+Avoid excessive glassmorphism, unnecessary gradients, giant rounded cards everywhere, distracting particles, and animation that obstructs reading.
+
+## 5. Signature 3D experience
+
+Use Three.js to create a tasteful, lightweight 3D visual identity.
+
+Hero concept:
+- A softly illuminated 3D pink awareness ribbon.
+- A clean, dimensional ribbon or ribbon-inspired object floating in a calm environment.
+- Gentle lighting, subtle depth, soft shadows, and restrained particles.
+- Slow idle movement and subtle pointer interaction on capable devices.
+- A clear message about breast health awareness and early evaluation.
+- Prominent actions: “Learn About Breast Health” and “Find a Hospital.”
+
+Do not use frightening cancer imagery, graphic anatomy, or misleading representations of medical scans.
+
+Use Anime.js for coordinated DOM and SVG animations, including text entrances, section reveals, buttons, search feedback, and the PinkCare ribbon logo.
+
+Use Three.js for 3D objects and scenes. Do not use Anime.js as a substitute for a real 3D renderer.
+
+Performance requirements:
+- Lazy-load 3D scenes.
+- Limit particle count, geometry complexity, shadows, and post-processing.
+- Pause or reduce rendering when the scene is offscreen or the page is hidden.
+- Provide a static fallback if WebGL is unavailable.
+- Respect `prefers-reduced-motion`.
+- Ensure the main content remains usable if animations fail.
+- Test on an ordinary laptop with 8 GB RAM and integrated graphics.
+- Avoid loading a large 3D scene on every page unnecessarily.
+
+## 6. Pink ribbon logo and search animation
+
+Create an original PinkCare awareness logo featuring a recognizable pink ribbon and the PinkCare wordmark.
+
+Implement these behaviors:
+
+1. On initial website load, the ribbon gently fades in and gives one subtle pulse.
+2. When a visitor submits a hospital search, the ribbon briefly glows or pulses while the search is loading.
+3. When a search returns results, stop the loading effect and show the results normally.
+4. If no results are found, show a clear message and alternative search options.
+5. On the homepage, the ribbon may perform a slow, subtle idle animation.
+6. Do not blink rapidly or continuously flash the logo.
+7. Provide a reduced-motion mode and keep the animation nonessential to navigation.
+
+The phrase “when I search this on the web” must be implemented correctly:
+
+- Animate the logo on PinkCare itself.
+- Add a favicon and appropriate logo assets.
+- Add unique page titles, meta descriptions, canonical URLs, Open Graph metadata, and sitemap.xml.
+- Add accurate Organization and WebSite structured data where appropriate.
+- Add search-engine indexing controls and a robots.txt file.
+- Use clear, crawlable content and descriptive internal links.
+- Configure Google Search Console and sitemap submission instructions in the documentation.
+
+Never claim that PinkCare can force Google, Bing, or another search engine to animate its logo in search results. Search engines control their own search-result presentation.
+
+## 7. Website pages
+
+Implement the following pages with real navigation and working content:
+
+### Public pages
+- `/` — Home.
+- `/about` — Mission, limitations, and team or organization information.
+- `/breast-health` — Breast-health fundamentals.
+- `/warning-signs` — Educational warning-sign information.
+- `/screening` — General screening education with reputable references.
+- `/risk-factors` — General educational information about risk factors.
+- `/learn` — Educational article directory.
+- `/learn/:slug` — Individual article.
+- `/ask-pinkcare` — Educational AI assistant.
+- `/find-care` — Nationwide hospital and healthcare facility finder.
+- `/find-care/:slug` — Facility details.
+- `/appointment-guide` — Questions to ask a healthcare provider and preparation guidance.
+- `/faq` — Frequently asked questions.
+- `/about/sources` — Medical references and content-review policy.
+- `/privacy` — Privacy policy.
+- `/accessibility` — Accessibility statement.
+- `/contact` — Contact information or contact form.
+
+### Admin pages
+- `/admin/login`
+- `/admin`
+- `/admin/articles`
+- `/admin/facilities`
+- `/admin/sources`
+- `/admin/users`
+- `/admin/audit-logs`
+
+Protect every admin API on the backend. Hiding admin links in React is not authorization.
+
+## 8. Nationwide Pakistan hospital finder
+
+This is a core product feature, not a decorative map.
+
+Build a nationwide healthcare directory with:
+- Interactive map.
+- Nearby facility search.
+- Manual city, province, district, or area search.
+- Facility name search.
+- Distance-based sorting.
+- Facility-type and service filters.
+- Map markers and synchronized result cards.
+- Directions links using a suitable map provider.
+- Facility details with address, coordinates, contact information, and source.
+- A visible verification status and last-verified date.
+- A way to report incorrect or outdated information.
+
+### Location behavior
+
+Ask the visitor for browser geolocation permission only after an understandable user action, such as selecting “Use my location.”
+
+When permission is granted:
+- Obtain the current coordinates.
+- Query the backend for nearby facilities.
+- Show approximate distances.
+- Display a clear location-loading state.
+- Handle denied permissions and unavailable GPS.
+
+When permission is denied:
+- Offer manual city or area search.
+- Keep the hospital directory fully usable.
+
+Use HTTPS in production for browser geolocation. Do not silently store precise visitor coordinates or send them to analytics. Do not persist them unless there is a clearly explained, necessary purpose and appropriate consent.
+
+### Data sources and coverage
+
+Use a maintainable, provenance-preserving data pipeline. Evaluate:
+- OpenStreetMap and compatible healthcare datasets.
+- Official Pakistani government healthcare directories.
+- Official hospital websites.
+- Official cancer-centre directories.
+- Trusted healthcare organizations.
+
+Preserve source identifiers, licensing information, import dates, and verification history. Respect each source's terms and rate limits.
+
+Do not scrape restricted sites or represent a third-party dataset as complete.
+
+Import facilities in batches, normalize names and addresses, validate coordinates, detect duplicates, and flag stale records.
+
+Distinguish between:
+- Mapped healthcare facilities.
+- Facilities with verified contact details.
+- Facilities with verified cancer-care services.
+- Facilities with verified breast-screening services.
+
+A hospital's existence does not prove that it offers mammography, breast clinics, oncology, surgery, or any other specific service.
+
+Never claim that the directory contains every hospital in Pakistan unless completeness has actually been established and maintained. Explain coverage limitations in the interface.
+
+### MongoDB geospatial model
+
+Use GeoJSON Point coordinates in `[longitude, latitude]` order.
+
+Example:
+
+    {
+      name: "Example Facility",
+      slug: "example-facility",
+      location: {
+        type: "Point",
+        coordinates: [longitude, latitude]
+      },
+      address: {
+        province: "",
+        district: "",
+        city: "",
+        fullAddress: ""
+      },
+      facilityType: "hospital",
+      services: [],
+      contacts: {
+        phone: null,
+        website: null
+      },
+      verification: {
+        status: "unverified",
+        source: "",
+        lastVerifiedAt: null
+      },
+      sourceIds: [],
+      createdAt: Date,
+      updatedAt: Date
+    }
+
+The example is a schema illustration, not a real hospital record. Never seed fake hospitals into production.
+
+Create a MongoDB `2dsphere` index on `location`.
+
+Implement:
+- `GET /api/v1/facilities`
+- `GET /api/v1/facilities/nearby?lat=...&lng=...&radius=...`
+- `GET /api/v1/facilities/:id`
+- `POST /api/v1/facilities/report`
+- `POST /api/v1/admin/facilities/import`
+- `POST /api/v1/admin/facilities/:id/verify`
+- `PATCH /api/v1/admin/facilities/:id`
+
+Validate latitude and longitude, cap radius and result count, paginate list endpoints, and ensure only authorized administrators can import or modify facilities.
+
+Imports must not be triggerable by unauthenticated public users.
+
+## 9. Educational AI assistant
+
+Create “Ask PinkCare,” an educational assistant that answers questions about:
+- Breast-health awareness.
+- General warning signs.
+- General screening concepts.
+- Risk-factor education.
+- Preparing for a medical appointment.
+- Finding relevant healthcare facilities.
+
+Implement retrieval-augmented generation (RAG):
+1. Retrieve relevant approved articles and references.
+2. Supply only relevant source excerpts to the model.
+3. Generate an answer grounded in those sources.
+4. Include citations or clickable source references.
+5. Explain uncertainty when the evidence is insufficient.
+
+The assistant must not diagnose, interpret medical images, calculate personal cancer probability, or prescribe treatment.
+
+If a visitor asks whether they have cancer, explain that an AI assistant cannot determine that and recommend assessment by an appropriately qualified healthcare professional.
+
+Protect against prompt injection, unsafe output, malicious user input, excessive requests, and leakage of system prompts or secrets.
+
+Never allow user-provided instructions or retrieved documents to override the application's safety rules.
+
+Keep the model provider configurable. Support a provider adapter so an approved cloud model or locally hosted model can be configured without rewriting application logic.
+
+Do not hardcode API keys or claim an integration works until it has been configured and tested.
+
+Do not retain chat content by default. If conversation storage is introduced later, minimize collected data, document the purpose and retention period, and provide appropriate privacy controls.
+
+## 10. Secure backend requirements
+
+Treat security as a release requirement, not an optional future enhancement.
+
+### Authentication
+- Use a maintained authentication approach.
+- Hash passwords with Argon2id or appropriately configured bcrypt.
+- Use secure, HTTP-only, SameSite cookies for browser sessions where appropriate.
+- Enforce HTTPS in production.
+- Implement session expiration, logout, and session invalidation.
+- Protect authentication flows against brute force and credential stuffing.
+- Add secure account recovery only when a real email-delivery flow is configured.
+- Require multi-factor authentication for privileged administrators where practical.
+
+Never store plaintext passwords, session tokens, or API secrets in MongoDB or frontend code.
+
+### Authorization
+Implement server-side roles:
+- `admin`
+- `editor`
+- `medical_reviewer`
+
+Enforce permissions in middleware and service layers. Editors cannot grant themselves administrative access. Medical content must not become verified merely because it was created or edited.
+
+### API security
+- Strict request validation.
+- Request-body size limits.
+- Rate limiting, including stricter limits for login and AI endpoints.
+- Helmet and an appropriate Content Security Policy.
+- Explicit CORS allowlist.
+- CSRF protection for cookie-authenticated state-changing requests.
+- NoSQL injection defenses.
+- Output encoding and safe rendering.
+- Safe file upload rules if uploads are ever introduced.
+- Secure error responses.
+- No secrets or sensitive content in logs.
+- Dependency auditing and lockfile management.
+- Request timeouts and resource limits.
+- Protection against open redirects and insecure direct object references.
+
+### Database and secrets
+- Keep MongoDB credentials and provider keys in environment variables or a production secret manager.
+- Provide `.env.example` with placeholder values only.
+- Never commit real `.env` files.
+- Use least-privilege database credentials.
+- Configure backups and document restoration testing.
+- Enforce indexes and database-level data validation where appropriate.
+- Do not expose stack traces or database internals to public users.
+
+### Privacy
+Collect only the data needed for the feature.
+Avoid collecting personal medical histories, precise location histories, or identifying health information without a clearly justified purpose and proper safeguards.
+
+Publish an honest privacy notice, data-retention policy, and contact process. Do not claim legal compliance or certification without an actual assessment.
+
+## 11. Content management and medical review
+
+Create database models for:
+- Users.
+- Articles.
+- Sources.
+- Healthcare facilities.
+- Audit logs.
+
+Articles should include:
+- Title and slug.
+- Body content.
+- Category.
+- Language.
+- Author.
+- Source references.
+- Publication status.
+- Medical-review status.
+- Reviewer and review date.
+- Creation and update timestamps.
+
+Sources should include:
+- Name.
+- Official URL.
+- Publisher.
+- Publication or update date where available.
+- Access date.
+- Relevant topic.
+- Verification status.
+
+Support draft, review, approved, published, and archived states.
+
+Keep a clear audit trail for privileged changes. Never store passwords, access tokens, full medical conversations, or unnecessary sensitive details in audit logs.
+
+## 12. English and Urdu
+
+Build the interface to support English and Urdu.
+
+Requirements:
+- Language switcher.
+- Proper Urdu font support.
+- Correct right-to-left layout.
+- Correct reading order and alignment.
+- Translated navigation, labels, errors, forms, and key educational content.
+- A translation workflow that does not publish unreviewed medical translations as authoritative.
+- Clear separation between translated educational material and AI-generated explanations.
+
+Do not assume that changing text alignment alone produces a proper Urdu interface.
+
+## 13. Accessibility and responsible animation
+
+Target WCAG 2.2 AA practices where practical.
+
+Include:
+- Semantic HTML.
+- Keyboard navigation.
+- Visible focus states.
+- Accessible form labels.
+- Screen-reader announcements for search results.
+- Accessible map alternatives in a list.
+- Appropriate image alternative text.
+- Reduced-motion support.
+- Good contrast.
+- Responsive zoom and text sizing.
+
+No flashing effects, rapidly blinking elements, or animation that interferes with reading.
+
+The ribbon pulse must be subtle, brief, and nonessential.
+
+## 14. SEO and search visibility
+
+Implement:
+- Unique page titles and meta descriptions.
+- Canonical URLs.
+- Open Graph and social-sharing metadata.
+- Favicon and appropriate logo assets.
+- Sitemap generation.
+- Robots.txt.
+- Structured data only when accurate and applicable.
+- Crawlable educational pages.
+- Clean slugs.
+- Appropriate 404 handling.
+- Performance optimization and descriptive internal links.
+
+Do not insert fake reviews, medical credentials, hospital partnerships, ratings, or unsupported medical claims into structured data.
+
+Document how to verify ownership and submit the sitemap through Google Search Console. Do not promise first-page rankings or a blinking logo in search results.
+
+## 15. Deployment and configuration
+
+Provide a practical deployment path for:
+- React frontend hosting.
+- Node.js backend hosting.
+- MongoDB Atlas or a properly secured MongoDB deployment.
+- HTTPS and environment variables.
+- Production CORS settings.
+- Health-check endpoint.
+- Database backups.
+- Logging and monitoring.
+- Domain configuration.
+- Search Console setup.
+
+Include:
+- `.env.example`
+- README with exact install commands.
+- Local development instructions.
+- Database setup.
+- Seed commands for clearly labelled sample articles and references.
+- Production build commands.
+- Deployment steps.
+- Troubleshooting instructions.
+
+Never include real credentials in seed data.
+
+Do not use fake production facility records. If sample facilities are needed for local development, label them unmistakably as fictional and ensure they cannot be mistaken for real care options.
+
+## 16. Testing and release gates
+
+Write automated tests for:
+- Authentication and logout.
+- Password hashing.
+- Unauthorized admin requests.
+- Role enforcement.
+- Input validation.
+- Rate limits.
+- Facility list and geospatial search.
+- Invalid coordinates.
+- Duplicate handling.
+- Source verification.
+- AI source citations.
+- AI refusal of diagnosis requests.
+- Error handling.
+- Important responsive UI flows.
+
+Use unit tests, API integration tests, and end-to-end tests where practical.
+
+Run linting, tests, and production builds. Fix failures rather than hiding them.
+
+Do not claim security is guaranteed. Document residual risks and recommend an independent security review before handling sensitive real-world data.
+
+## 17. Development workflow — mandatory
+
+Work in incremental, verifiable phases.
+
+### Phase 0 — Repository inspection
+Inspect existing files, dependencies, scripts, environment configuration, and project state. Report what already works and what is missing. Do not overwrite existing working code without reason.
+
+### Phase 1 — Foundation and design system
+Build the responsive shell, typography, color system, navigation, footer, logo, accessible components, and page routing.
+
+### Phase 2 — Homepage and 3D experience
+Implement the 3D awareness ribbon, homepage hero, Anime.js animations, reduced-motion mode, responsive fallback, and performance controls.
+
+### Phase 3 — Education pages
+Build content pages, article models, source references, and the medical-review workflow.
+
+### Phase 4 — Secure backend
+Implement database connection, authentication, authorization, validation, rate limiting, audit logging, and security tests.
+
+### Phase 5 — Nationwide facility finder
+Build facility ingestion, deduplication, geospatial indexing, map interface, nearby search, city search, verification badges, and correction reports.
+
+### Phase 6 — Educational AI assistant
+Implement retrieval from approved content, citations, safe response behavior, provider configuration, and abuse protection.
+
+### Phase 7 — Urdu, accessibility, and SEO
+Implement RTL support, translation review, accessibility improvements, and crawlable metadata.
+
+### Phase 8 — Testing and deployment
+Run tests, fix defects, document configuration, and verify the production build.
+
+At the end of every phase:
+1. Summarize what was implemented.
+2. List files created or modified.
+3. Report commands actually run and their results.
+4. Identify incomplete work and blockers.
+5. Fix broken imports, routes, API calls, and build errors before proceeding.
+6. Do not replace functional code with placeholders to make the task appear complete.
+7. Keep a concise progress checklist in `docs/PROGRESS.md`.
+
+## 18. “Create next part” continuation rule
+
+When I say **“Create next part”**:
+
+- Read the repository and `docs/PROGRESS.md`.
+- Inspect the existing implementation before editing.
+- Continue from the first incomplete phase.
+- Preserve the established architecture, design system, dependencies, and naming conventions.
+- Integrate the new work with the previous implementation.
+- Do not restart the project or generate a separate disconnected demo.
+- Do not duplicate existing features.
+- Run relevant tests and builds.
+- Update the progress checklist.
+- Report the exact next steps and any remaining blockers.
+
+When I say **“Fix everything”**, inspect the project, reproduce the failures, repair the underlying causes, and run the relevant verification commands.
+
+When I say **“Security audit”**, review the frontend, backend, authentication, authorization, dependencies, configuration, database access, AI integration, location handling, and data retention. Prioritize findings by severity and fix confirmed issues where authorized.
+
+## 19. Final acceptance criteria
+
+PinkCare is not complete until:
+- All required pages load and navigate correctly.
+- The frontend communicates with the real backend.
+- MongoDB operations work.
+- Authentication and authorization are enforced server-side.
+- No secrets are exposed to the client.
+- The facility finder supports nearby and manual search.
+- The directory clearly distinguishes verified from unverified information.
+- The AI assistant cites approved educational sources and does not diagnose.
+- The 3D ribbon works with a graceful fallback.
+- Anime.js animations respect reduced-motion settings.
+- English and Urdu layouts are usable.
+- Critical security and integration tests pass.
+- The production build succeeds.
+- Setup, deployment, limitations, and maintenance are documented.
+
+Begin with **Phase 0: inspect my current project**, then implement Phase 1. Do not attempt to generate the entire production system in one enormous, untested code dump.
+
+Ask me only when a decision genuinely blocks safe implementation. Otherwise choose sensible defaults, document them, and continue.

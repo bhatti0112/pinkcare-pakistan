@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-plum: #42152F;
+    --color-pink: #E83E8C;
+    --color-pink-soft: #FCE7F3;
+    --color-pink-light: #FFF1F7;
+    --color-warm-bg: #FFF8FB;
+    --color-text-dark: #25202A;
+    --color-text-muted: #625766;
+    --color-success: #16794B;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-warm-bg);
+    color: var(--color-text-dark);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Urdu Language Typography & Alignment */
+  [dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  [dir="rtl"] .font-urdu,
+  [lang="ur"] {
+    font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', serif;
+    line-height: 2.1;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+/* Accessibility: respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbars matching PinkCare theme */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF1F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #F472B6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E83E8C;
+}
